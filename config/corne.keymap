@@ -29,9 +29,9 @@
             //                    | CTRL | LWR | SPC |      | ENT | RSE  | FUNC |
 
             bindings = <
-                &kp TAB   &kp Q &kp W &kp E     &kp R     &kp T          &kp Y   &kp U     &kp I     &kp O   &kp P    &kp BSPC
-                &td0      &kp A &kp S &kp D     &kp F     &kp G          &kp H   &kp J     &kp K     &kp L   &kp SEMI &kp SQT
-                &kp LSHFT &kp Z &kp X &kp C     &kp V     &kp B          &kp N   &kp M     &kp COMMA &kp DOT &kp FSLH &kp GUI
+                &td0      &kp Q &kp W &kp E     &kp R     &kp T          &kp Y   &kp U     &kp I     &kp O   &kp P    &kp BSPC
+                &kp TAB   &kp A &kp S &kp D     &kp F     &kp G          &kp H   &kp J     &kp K     &kp L   &kp SEMI &kp SQT
+                &kp LSHFT &kp Z &kp X &kp C     &kp V     &kp B          &kp N   &kp M     &kp COMMA &kp DOT &kp FSLH &kp RGUI
                                       &kp LCTRL &mo LOWER &kp SPACE      &kp RET &mo RAISE &mo FUNC
             >;
         };
@@ -51,13 +51,13 @@
         };
 
         raise_layer {
-            // | TAB  | ! | @ | # | $ | % |      | ^ | & | * | ( | ) | BKSP |
-            // | CTRL | + | - | * | / | = |      |   |   |   | [ | ] |      |
-            // | SHFT | ` | _ |   | \ | | |      |   |   |   | { | } |      |
+            // | TAB  | ! | @ | # | $ | % |      | ^ | & | * | ( | ) | |
+            // | CTRL | + | - | * | / | = |      |   |   |   | [ | ] | |
+            // | SHFT | ` | _ |   | \ | | |      |   |   |   | { | } | |
             //                |   |   |   |      |   |   |   |
 
             bindings = <
-                &kp TAB   &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT       &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR &kp BSPC
+                &kp TAB   &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT       &kp CARET &kp AMPS  &kp ASTRK &kp LPAR  &kp RPAR &trans
                 &kp LCTRL &kp PLUS  &kp MINUS &kp ASTRK &kp FSLH  &kp EQUAL       &trans    &trans    &trans    &kp LBKT  &kp RBKT &trans
                 &kp LSHFT &kp TILDE &kp UNDER &kp GRAVE &kp BSLH  &kp PIPE        &trans    &kp LT    &kp GT    &kp LBRC  &kp RBRC &trans
                                               &trans    &mo FUNC  &trans          &trans    &trans    &trans

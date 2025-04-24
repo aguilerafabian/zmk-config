@@ -8,6 +8,8 @@
 #define RAISE   2
 #define FUNC    3
 
+// GASC(Gui/Command-Alt/Option-Shift-Control) as home row mod
+
 / {
     behaviors {
         td0: tap_dance_0 {
@@ -45,41 +47,24 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // | ESC  |  Q  |  W  |  E   |  R  |  T  |      |  Y  |  U   |  I   |  O  |  P  | BKSP |
-            // | TAB  |  A  |  S  |  D   |  F  |  G  |      |  H  |  J   |  K   |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C   |  V  |  B  |      |  N  |  M   |  ,   |  .  |  /  | ALT  |
-            //                    | CTRL | LWR | SPC |      | ENT | RSE  | CAPS |
-
-            // GASC(Gui/Command-Alt/Option-Shift-Control) as home row mod
-
             bindings = <
-                &td0      &kp Q        &kp W       &kp E        &kp R        &kp T          &kp Y   &kp U        &kp I        &kp O       &kp P          &kp BSPC
-                &kp TAB   &hml LGUI A  &hml LALT S &hml LSHFT D &hml LCTRL F &kp G          &kp H   &hmr RCTRL J &hmr RSHFT K &hmr RALT L &hmr RGUI SEMI &kp SQT
-                &kp LSHFT &kp Z        &kp X       &kp C        &kp V        &kp B          &kp N   &kp M        &kp COMMA    &kp DOT     &kp FSLH       &kp RGUI
-                                                   &kp LCTRL    &mo LOWER    &kp SPACE      &kp RET &mo RAISE    &kp CAPS
+                &td0      &kp Q       &kp W       &kp E        &kp R        &kp T          &kp Y   &kp U        &kp I        &kp O       &kp P          &kp BSPC
+                &kp TAB   &hml LGUI A &hml LALT S &hml LSHFT D &hml LCTRL F &kp G          &kp H   &hmr RCTRL J &hmr RSHFT K &hmr RALT L &hmr RGUI SEMI &kp SQT
+                &kp LSHFT &kp Z       &kp X       &kp C        &kp V        &kp B          &kp N   &kp M        &kp COMMA    &kp DOT     &kp FSLH       &kp RGUI
+                                                  &kp CAPS     &mo LOWER    &kp SPACE      &kp RET &mo RAISE    &kp CAPS
             >;
         };
 
         lower_layer {
-            // | | 1 | 2 | 3 | 4 | 5 |      |  6   |  7   |  8   |  9   |  0   | BKSP  |
-            // | | = | / | * | - | + |      | LFT  | DWN  |  UP  | RGT  | P-DW | P-UP  |
-            // | |   |   |   |   |   |      | PREV | VOLD | VOLU | NEXT | PP   | MUTE  |
-            //           |   |   |   |      |      | FUNC |      |
-
             bindings = <
-                &trans &kp N1    &kp N2   &kp N3    &kp N4    &kp N5         &kp N6     &kp N7       &kp N8       &kp N9     &kp N0           &kp BSPC
-                &trans &kp EQUAL &kp FSLH &kp ASTRK &kp MINUS &kp PLUS       &kp LEFT   &kp DOWN     &kp UP       &kp RIGHT  &kp PAGE_DOWN    &kp PAGE_UP
-                &trans &trans    &trans   &trans    &trans    &trans         &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &kp C_PLAY_PAUSE &kp C_MUTE
-                                          &trans    &trans    &kp SPACE      &kp RET    &mo FUNC     &trans
+                &trans &kp N1    &kp N2   &kp N3    &kp N4    &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0        &kp BSPC
+                &trans &kp EQUAL &kp FSLH &kp ASTRK &kp MINUS &kp PLUS       &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp PAGE_DOWN &kp PAGE_UP
+                &trans &trans    &trans   &trans    &trans    &trans         &trans   &trans   &trans &trans    &trans        &trans
+                                          &trans    &trans    &kp SPACE      &kp RET  &mo FUNC &trans
             >;
         };
 
         raise_layer {
-            // | | ! | @ | # |  $   | % |      | ^ | & | * |   |   | BKSP |
-            // | | ` | _ | ` |  \   | | |      |   |   |   | [ | ] |      |
-            // | |   |   |   |      |   |      |   | < | > | { | } |      |
-            //           |   | FUNC |   |      |   |   |   |
-
             bindings = <
                 &trans &kp EXCL  &kp AT    &kp HASH  &kp DLLR &kp PRCNT      &kp CARET &kp AMPS &kp ASTRK &trans &trans &kp BSPC
                 &trans &trans    &kp LT    &kp LBKT  &kp LBRC &kp LPAR       &kp RPAR  &kp RBRC &kp RBKT  &kp GT &trans &trans
@@ -89,16 +74,11 @@
         };
 
         function_layer {
-            // | |   F1   | F2  | F3  | F4  | F5  |      | F6 | F7 | F8 | F9 | F10 | |
-            // | | BT_CLR | USB | BLE | F11 | F12 |      |    |    |    |    |     | |
-            // | |  BT5   | BT4 | BT3 | BT2 | BT1 |      |    |    |    |    |     | |
-            //                  |     |     |     |      |    |    |    |
-
             bindings = <
-                &trans &kp F1       &kp F2       &kp F3       &kp F4       &kp F5            &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &trans
-                &trans &bt BT_CLR   &out OUT_USB &out OUT_BLE &kp F11      &kp F12           &trans &trans &trans &trans &trans  &trans
-                &trans &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0      &trans &trans &trans &trans &trans  &trans
-                                                 &trans       &trans       &trans            &trans &trans &trans
+                &trans &kp F1       &kp F2       &kp F3       &kp F4       &kp F5            &kp F6     &kp F7           &kp F8       &kp F9     &kp F10 &trans
+                &trans &bt BT_CLR   &out OUT_USB &out OUT_BLE &kp F11      &kp F12           &kp C_PREV &kp C_VOL_DN     &kp C_VOL_UP &kp C_NEXT &trans  &trans
+                &trans &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0      &kp C_MUTE &kp C_PLAY_PAUSE &trans       &trans     &trans  &trans
+                                                 &trans       &trans       &trans            &trans     &trans           &trans
             >;
         };
     };

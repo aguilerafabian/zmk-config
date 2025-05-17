@@ -87,8 +87,8 @@
         lower_layer {
             bindings = <
                 &trans                 &kp N1       &kp N2       &kp N3       &kp N4              &kp N5                      &kp N6         &kp N7              &kp N8       &kp N9      &kp N0          &kp BSPC
-                &trans                 &kp FSLH     &kp ASTRK    &kp MINUS    &kp PLUS            &kp EQUAL                   &kp LEFT       &kp DOWN            &kp UP       &kp RIGHT   &trans          &trans
-                &tog_on NUMBERS_LAYER  &kp RG(Z)    &kp RG(X)    &kp RG(C)    &kp RG(V)           &trans                      &trans         &trans              &trans       &trans      &trans          &trans
+                &trans                 &kp FSLH     &kp ASTRK    &kp MINUS    &kp PLUS            &kp EQUAL                   &kp LEFT       &kp DOWN            &kp UP       &kp RIGHT   &none           &none
+                &tog NUMBERS_LAYER     &kp RG(Z)    &kp RG(X)    &kp RG(C)    &kp RG(V)           &none                       &none          &none               &none        &none       &none           &none
                                                                  &trans       &trans              &kp SPACE                   &kp RET        &mo FUNCTIONS_LAYER &trans
             >;
         };
@@ -96,26 +96,26 @@
         raise_layer {
             bindings = <
                 &trans                 &kp EXCL     &kp AT       &kp HASH     &kp DLLR            &kp PRCNT                   &kp CARET      &kp LPAR            &kp RPAR     &kp LT      &kp GT          &kp BSPC
-                &trans                 &kp RG(A)    &kp ASTRK    &kp GRAVE    &kp TILDE           &kp AMPS                    &trans         &kp LBRC            &kp RBRC     &trans      &kp SEMICOLON   &kp APOSTROPHE
-                &trans                 &kp RG(Z)    &kp RG(X)    &kp RG(C)    &kp RG(V)           &trans                      &kp UNDER      &kp LBKT            &kp RBKT     &kp PIPE    &kp BSLH        &trans
+                &trans                 &kp RG(A)    &kp ASTRK    &kp GRAVE    &kp TILDE           &kp AMPS                    &none          &kp LBRC            &kp RBRC     &none       &kp SEMICOLON   &kp APOSTROPHE
+                &tog NUMBERS_LAYER     &kp RG(Z)    &kp RG(X)    &kp RG(C)    &kp RG(V)           &none                       &kp UNDER      &kp LBKT            &kp RBKT     &kp PIPE    &kp BSLH        &none
                                                                  &trans       &mo FUNCTIONS_LAYER &kp SPACE                   &kp RET        &trans              &trans
             >;
         };
 
         functions_layer {
             bindings = <
-                &trans                 &kp F1       &kp F2       &kp F3       &kp F4              &kp F5                      &kp F6         &kp F7              &kp F8       &kp F9      &kp F10         &trans
-                &trans                 &bt BT_CLR   &out OUT_USB &out OUT_BLE &kp F11             &kp F12                     &kp C_PREV     &kp C_VOL_DN        &kp C_VOL_UP &kp C_NEXT  &trans          &trans
-                &trans                 &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1        &bt BT_SEL 0                &kp C_MUTE     &kp C_PLAY_PAUSE    &trans       &trans      &trans          &trans
-                                                                 &trans       &trans              &kp SPACE                   &kp RET        &trans              &trans
+                &none                  &kp F1       &kp F2       &kp F3       &kp F4              &kp F5                      &kp F6         &kp F7              &kp F8       &kp F9      &kp F10         &none
+                &none                  &bt BT_CLR   &out OUT_USB &out OUT_BLE &kp F11             &kp F12                     &kp C_PREV     &kp C_VOL_DN        &kp C_VOL_UP &kp C_NEXT  &none           &none
+                &none                  &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1        &bt BT_SEL 0                &kp C_MUTE     &kp C_PLAY_PAUSE    &none        &none       &none           &none
+                                                                 &none        &none               &none                       &none          &none               &none
             >;
         };
 
         numbers_layer {
             bindings = <
                 &tog_off NUMBERS_LAYER &none        &none        &kp HASH     &kp DLLR            &kp PRCNT                   &none          &kp N7              &kp N8       &kp N9      &none           &kp BSPC
-                &trans                 &kp FSLH     &kp ASTRK    &kp MINUS    &kp PLUS            &kp EQUAL                   &kp N0         &kp N4              &kp N5       &kp N6      &none           &none
-                &trans                 &trans       &trans       &trans       &trans              &trans                      &kp DOT        &kp N1              &kp N2       &kp N3      &kp COMMA       &none
+                &none                  &kp FSLH     &kp ASTRK    &kp MINUS    &kp PLUS            &kp EQUAL                   &kp N0         &kp N4              &kp N5       &kp N6      &none           &none
+                &none                  &none        &none        &none        &none               &none                       &kp DOT        &kp N1              &kp N2       &kp N3      &kp COMMA       &none
                                                                  &trans       &trans              &kp SPACE                   &kp RET        &trans              &trans
             >;
         };

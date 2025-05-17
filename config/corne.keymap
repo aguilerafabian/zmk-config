@@ -27,16 +27,6 @@
             tapping-term-ms = <200>;
             bindings = <&kp LSHFT>, <&sk LSHFT>;
         };
-        hm: homerow_mods {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            require-prior-idle-ms = <125>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            bindings = <&kp>, <&kp>;
-        };
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_LEFT";
@@ -74,52 +64,59 @@
             toggle-mode = "off";
         };
     };
-
+    combos {
+        compatible = "zmk,combos";
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <19 20>;
+            bindings = <&kp ESC>;
+        };
+    };
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-                &td0      &kp Q       &kp W       &kp E        &kp R        &kp T          &kp Y   &kp U        &kp I        &kp O       &kp P          &kp BSPC
-                &kp TAB   &hml LGUI A &hml LALT S &hml LSHFT D &hml LCTRL F &kp G          &kp H   &hmr RCTRL J &hmr RSHFT K &hmr RALT L &hmr RGUI SEMI &kp SQT
-                &td_shift &kp Z       &kp X       &kp C        &kp V        &kp B          &kp N   &kp M        &kp COMMA    &kp DOT     &kp FSLH       &td_shift
-                                                  &kp CAPS     &mo LOWER    &kp SPACE      &kp RET &mo RAISE    &kp CAPS
+                &td0      &kp Q       &kp W       &kp E        &kp R        &kp T                  &kp Y          &kp U        &kp I        &kp O       &kp P           &kp BSPC
+                &kp TAB   &hml LGUI A &hml LALT S &hml LSHFT D &hml LCTRL F &kp G                  &kp H          &hmr RCTRL J &hmr RSHFT K &hmr RALT L &hmr RGUI COLON &kp DOUBLE_QUOTES
+                &td_shift &kp Z       &kp X       &kp C        &kp V        &kp B                  &kp N          &kp M        &kp COMMA    &kp DOT     &kp FSLH        &td_shift
+                                                  &kp CAPS     &mo LOWER    &hml LSHFT SPACE       &hmr RSHFT RET &mo RAISE    &kp CAPS
             >;
         };
 
         lower_layer {
             bindings = <
-                &trans          &kp N1    &kp N2    &kp N3    &kp N4    &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0        &kp BSPC
-                &trans          &kp EQUAL &kp FSLH  &kp ASTRK &kp MINUS &kp PLUS       &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp PAGE_DOWN &kp PAGE_UP
-                &tog_on NUMBERS &kp RG(Z) &kp RG(X) &kp RG(C) &kp RG(V) &trans         &trans   &trans   &trans &trans    &trans        &trans
-                                                    &trans    &trans    &kp SPACE      &kp RET  &mo FUNC &trans
+                &trans          &kp N1    &kp N2    &kp N3    &kp N4    &kp N5                     &kp N6   &kp N7   &kp N8 &kp N9    &kp N0        &kp BSPC
+                &trans          &kp EQUAL &kp FSLH  &kp ASTRK &kp MINUS &kp PLUS                   &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp SEMICOLON &kp APOSTROPHE
+                &tog_on NUMBERS &kp RG(Z) &kp RG(X) &kp RG(C) &kp RG(V) &trans                     &trans   &trans   &trans &trans    &trans        &trans
+                                                    &trans    &trans    &kp SPACE                  &kp RET  &mo FUNC &trans
             >;
         };
 
         raise_layer {
             bindings = <
-                &trans &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT      &kp CARET &kp AMPS  &kp ASTRK &trans   &trans   &kp BSPC
-                &trans &trans    &kp LT    &kp LBKT  &kp LBRC  &kp LPAR       &kp RPAR  &kp RBRC  &kp RBKT  &kp GT   &trans   &trans
-                &trans &kp RG(Z) &kp RG(X) &kp RG(C) &kp RG(V) &trans         &kp TILDE &kp UNDER &kp GRAVE &kp BSLH &kp PIPE &trans
-                                           &trans    &mo FUNC  &kp SPACE      &kp RET   &trans    &trans
+                &trans &kp EXCL  &kp AT    &kp HASH  &kp DLLR  &kp PRCNT                           &kp CARET &kp AMPS  &kp ASTRK &trans   &trans   &kp BSPC
+                &trans &kp RG(A) &kp LT    &kp LBKT  &kp LBRC  &kp LPAR                            &kp RPAR  &kp RBRC  &kp RBKT  &kp GT   &trans   &trans
+                &trans &kp RG(Z) &kp RG(X) &kp RG(C) &kp RG(V) &trans                              &kp TILDE &kp UNDER &kp GRAVE &kp BSLH &kp PIPE &trans
+                                           &trans    &mo FUNC  &kp SPACE                           &kp RET   &trans    &trans
             >;
         };
 
         function_layer {
             bindings = <
-                &trans &kp F1       &kp F2       &kp F3       &kp F4       &kp F5            &kp F6     &kp F7           &kp F8       &kp F9     &kp F10 &trans
-                &trans &bt BT_CLR   &out OUT_USB &out OUT_BLE &kp F11      &kp F12           &kp C_PREV &kp C_VOL_DN     &kp C_VOL_UP &kp C_NEXT &trans  &trans
-                &trans &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0      &kp C_MUTE &kp C_PLAY_PAUSE &trans       &trans     &trans  &trans
-                                                 &trans       &trans       &trans            &trans     &trans           &trans
+                &trans &kp F1       &kp F2       &kp F3       &kp F4       &kp F5                  &kp F6     &kp F7           &kp F8       &kp F9     &kp F10 &trans
+                &trans &bt BT_CLR   &out OUT_USB &out OUT_BLE &kp F11      &kp F12                 &kp C_PREV &kp C_VOL_DN     &kp C_VOL_UP &kp C_NEXT &trans  &trans
+                &trans &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0            &kp C_MUTE &kp C_PLAY_PAUSE &trans       &trans     &trans  &trans
+                                                 &trans       &trans       &trans                  &trans     &trans           &trans
             >;
         };
 
         numbers_layer {
             bindings = <
-                &tog_off NUMBERS &trans &trans &trans &trans &trans               &kp MINUS &kp N7 &kp N8 &kp N9 &kp FSLH  &kp BSPC
-                &trans           &trans &trans &trans &trans &trans               &kp PLUS  &kp N4 &kp N5 &kp N6 &kp ASTRK &kp EQUAL
-                &trans           &trans &trans &trans &trans &hm LC(V) LC(C)      &kp DOT   &kp N1 &kp N2 &kp N3 &kp N0    &kp COMMA
-                                               &trans &trans &trans               &trans    &trans &trans
+                &tog_off NUMBERS &trans &trans &trans &trans &trans                                &kp MINUS &kp N7 &kp N8 &kp N9 &kp FSLH  &kp BSPC
+                &trans           &trans &trans &trans &trans &trans                                &kp PLUS  &kp N4 &kp N5 &kp N6 &kp ASTRK &kp EQUAL
+                &trans           &trans &trans &trans &trans &trans                                &kp DOT   &kp N1 &kp N2 &kp N3 &kp N0    &kp COMMA
+                                               &trans &trans &trans                                &trans    &trans &trans
             >;
         };
     };

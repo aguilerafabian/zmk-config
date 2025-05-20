@@ -5,9 +5,10 @@
 
 #define DEFAULT_LAYER   0
 #define LOWER_LAYER     1
-#define RAISE_LAYER     2
-#define FUNCTIONS_LAYER 3
-#define NUMBERS_LAYER   4
+#define SYMBOLS_LAYER   2
+#define NUMBERS_LAYER   3
+#define FUNCTIONS_LAYER 4
+#define ADMIN_LAYER     5
 
 // GASC(Gui/Command-Alt/Option-Shift-Control) as home row mod
 
@@ -19,13 +20,6 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp ESC>, <&kp CAPS>;
-        };
-        td_shift: tap_dance_shift {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_SHIFT";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LSHFT>, <&sk LSHFT>;
         };
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
@@ -51,6 +45,13 @@
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>; // Left-side keys
             hold-trigger-on-release;
         };
+        td_shift: tap_dance_shift {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_SHIFT";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LSHFT>, <&sk LSHFT>;
+        };
         tog_on: toggle_layer_on_only {
             compatible = "zmk,behavior-toggle-layer";
             #binding-cells = <1>;
@@ -64,59 +65,71 @@
             toggle-mode = "off";
         };
     };
+
     combos {
         compatible = "zmk,combos";
         combo_esc {
+            layers = <DEFAULT_LAYER>
             timeout-ms = <50>;
             key-positions = <19 20>;
             bindings = <&kp ESC>;
         };
     };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-                &td0                   &kp Q        &kp W        &kp E        &kp R               &kp T                       &kp Y          &kp U               &kp I        &kp O       &kp P           &kp BSPC
-                &kp TAB                &hml LGUI A  &hml LALT S  &hml LSHFT D &hml LCTRL F        &kp G                       &kp H          &hmr RCTRL J        &hmr RSHFT K &hmr RALT L &hmr RGUI COLON &kp DOUBLE_QUOTES
-                &mo NUMBERS_LAYER      &kp Z        &kp X        &kp C        &kp V               &kp B                       &kp N          &kp M               &kp COMMA    &kp DOT     &kp FSLH        &td_shift
-                                                                 &kp CAPS     &mo LOWER_LAYER     &hml LSHFT SPACE            &hmr RSHFT RET &mo RAISE_LAYER     &kp CAPS
+                &td0        &kp Q        &kp W        &kp E             &kp R           &kp T                       &kp Y          &kp U             &kp I               &kp O       &kp P           &kp BSPC
+                &kp TAB     &hml LGUI A  &hml LALT S  &hml LSHFT D      &hml LCTRL F    &kp G                       &kp H          &hmr RCTRL J      &hmr RSHFT K        &hmr RALT L &hmr RGUI COLON &kp DOUBLE_QUOTES
+                &kp CAPS    &kp Z        &kp X        &kp C             &kp V           &kp B                       &kp N          &kp M             &kp COMMA           &kp DOT     &kp FSLH        &kp CAPS
+                                                      &mo NUMBERS_LAYER &mo LOWER_LAYER &hml LSHFT SPACE            &hmr RSHFT RET &mo SYMBOLS_LAYER &mo FUNCTIONS_LAYER
             >;
         };
 
         lower_layer {
             bindings = <
-                &trans                 &kp N1       &kp N2       &kp N3       &kp N4              &kp N5                      &kp N6         &kp N7              &kp N8       &kp N9      &kp N0          &kp BSPC
-                &trans                 &kp FSLH     &kp ASTRK    &kp MINUS    &kp PLUS            &kp EQUAL                   &kp LEFT       &kp DOWN            &kp UP       &kp RIGHT   &none           &none
-                &tog NUMBERS_LAYER     &kp RG(Z)    &kp RG(X)    &kp RG(C)    &kp RG(V)           &none                       &none          &none               &none        &none       &none           &none
-                                                                 &trans       &trans              &kp SPACE                   &kp RET        &mo FUNCTIONS_LAYER &trans
+                &trans      &kp N1       &kp N2       &kp N3            &kp N4          &kp N5                      &kp N6         &kp N7            &kp N8              &kp N9      &kp N0          &kp BSPC
+                &trans      &kp FSLH     &kp ASTRK    &kp MINUS         &kp PLUS        &kp EQUAL                   &kp LEFT       &kp DOWN          &kp UP              &kp RIGHT   &none           &none
+                &none       &kp RG(Z)    &kp RG(X)    &kp RG(C)         &kp RG(V)       &none                       &none          &none             &none               &none       &none           &none
+                                                      &trans            &trans          &kp SPACE                   &kp RET        &mo ADMIN_LAYER   &trans
             >;
         };
 
-        raise_layer {
+        symbols_layer {
             bindings = <
-                &trans                 &kp EXCL     &kp AT       &kp HASH     &kp DLLR            &kp PRCNT                   &kp CARET      &kp LPAR            &kp RPAR     &kp LT      &kp GT          &kp BSPC
-                &trans                 &kp RG(A)    &kp ASTRK    &kp GRAVE    &kp TILDE           &kp AMPS                    &none          &kp LBRC            &kp RBRC     &none       &kp SEMICOLON   &kp APOSTROPHE
-                &tog NUMBERS_LAYER     &kp RG(Z)    &kp RG(X)    &kp RG(C)    &kp RG(V)           &none                       &kp UNDER      &kp LBKT            &kp RBKT     &kp PIPE    &kp BSLH        &none
-                                                                 &trans       &mo FUNCTIONS_LAYER &kp SPACE                   &kp RET        &trans              &trans
-            >;
-        };
-
-        functions_layer {
-            bindings = <
-                &none                  &kp F1       &kp F2       &kp F3       &kp F4              &kp F5                      &kp F6         &kp F7              &kp F8       &kp F9      &kp F10         &none
-                &none                  &bt BT_CLR   &out OUT_USB &out OUT_BLE &kp F11             &kp F12                     &kp C_PREV     &kp C_VOL_DN        &kp C_VOL_UP &kp C_NEXT  &none           &none
-                &none                  &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1        &bt BT_SEL 0                &kp C_MUTE     &kp C_PLAY_PAUSE    &none        &none       &none           &none
-                                                                 &none        &none               &none                       &none          &none               &none
+                &trans      &kp EXCL     &kp AT       &kp HASH          &kp DLLR        &kp PRCNT                   &kp CARET      &kp LPAR          &kp RPAR            &kp LT      &kp GT          &kp BSPC
+                &trans      &kp RG(A)    &kp ASTRK    &kp GRAVE         &kp TILDE       &kp AMPS                    &none          &kp LBRC          &kp RBRC            &none       &kp SEMICOLON   &kp APOSTROPHE
+                &none       &kp RG(Z)    &kp RG(X)    &kp RG(C)         &kp RG(V)       &none                       &kp UNDER      &kp LBKT          &kp RBKT            &kp PIPE    &kp BSLH        &none
+                                                      &trans            &mo ADMIN_LAYER &kp SPACE                   &kp RET        &trans            &trans
             >;
         };
 
         numbers_layer {
             bindings = <
-                &tog_off NUMBERS_LAYER &none        &none        &kp HASH     &kp DLLR            &kp PRCNT                   &none          &kp N7              &kp N8       &kp N9      &none           &kp BSPC
-                &none                  &kp FSLH     &kp ASTRK    &kp MINUS    &kp PLUS            &kp EQUAL                   &kp N0         &kp N4              &kp N5       &kp N6      &none           &none
-                &none                  &none        &none        &none        &none               &none                       &kp DOT        &kp N1              &kp N2       &kp N3      &kp COMMA       &none
-                                                                 &trans       &trans              &kp SPACE                   &kp RET        &trans              &trans
+                &none       &none        &none        &kp HASH          &kp DLLR        &kp PRCNT                   &none          &kp N7            &kp N8              &kp N9      &none           &kp BSPC
+                &none       &kp FSLH     &kp ASTRK    &kp MINUS         &kp PLUS        &kp EQUAL                   &kp N0         &kp N4            &kp N5              &kp N6      &none           &none
+                &none       &none        &none        &none             &none           &none                       &kp DOT        &kp N1            &kp N2              &kp N3      &kp COMMA       &none
+                                                      &none             &none           &kp SPACE                   &kp RET        &none             &none
+            >;
+        };
+
+        functions_layer {
+            bindings = <
+                &none       &kp F1       &kp F2       &kp F3            &kp F4          &kp F5                      &kp F6         &kp F7            &kp F8              &kp F9      &kp F10         &none
+                &none       &none        &none        &none             &kp F11         &kp F12                     &kp C_PREV     &kp C_VOL_DN      &kp C_VOL_UP        &kp C_NEXT  &none           &none
+                &none       &none        &none        &none             &none           &none                       &kp C_MUTE     &kp C_PLAY_PAUSE  &none               &none       &none           &none
+                                                      &none             &none           &none                       &none          &none             &none
+            >;
+        };
+
+        admin_layer {
+            bindings = <
+                &bootloader &none        &none        &none             &none           &none                       &none          &none             &none               &none       &none           &bootloader
+                &none       &none        &none        &none             &none           &none                       &none          &none             &none               &none       &none           &none
+                &none       &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2      &bt BT_SEL 1    &bt BT_SEL 0                &bt BT_CLR     &out OUT_USB      &out OUT_BLE        &none       &none           &none
+                                                      &none             &none           &none                       &none          &none             &none
             >;
         };
     };

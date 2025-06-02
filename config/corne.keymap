@@ -83,7 +83,6 @@
         default_layer {
             bindings = <
                 &td0        &kp Q        &kp W        &kp E             &kp R           &kp T                       &kp Y          &kp U             &kp I               &kp O       &kp P            &kp BSPC
-                &kp TAB     &hml LGUI A  &hml LALT S  &hml LSHFT D      &hml LCTRL F    &kp G                       &kp H          &hmr RCTRL J      &hmr RSHFT K        &hmr RALT L &hmr RGUI COLON  &kp DOUBLE_QUOTES
                 &kp TAB     &hml LCTRL A &hml LGUI S  &hml LALT D       &hml LSHFT F    &kp G                       &kp H          &hmr RSHFT J      &hmr RALT K         &hmr RGUI L &hmr RCTRL COLON &kp DOUBLE_QUOTES
                 &kp CAPS    &kp Z        &kp X        &kp C             &kp V           &kp B                       &kp N          &kp M             &kp COMMA           &kp DOT     &kp FSLH         &kp CAPS
                                                       &mo NUMBERS_LAYER &mo LOWER_LAYER &hml LSHFT SPACE            &hmr RSHFT RET &mo SYMBOLS_LAYER &mo FUNCTIONS_LAYER

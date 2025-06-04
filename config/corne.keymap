@@ -13,13 +13,6 @@
 
 / {
     behaviors {
-        td0: tap_dance_0 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_0";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp ESC>, <&kp CAPS>;
-        };
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             label = "HOMEROW_LEFT";
@@ -43,6 +36,13 @@
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>; // Left-side keys
             hold-trigger-on-release;
+        };
+        td0: tap_dance_0 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TAP_DANCE_0";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp ESC>, <&kp CAPS>;
         };
         td_shift: tap_dance_shift {
             compatible = "zmk,behavior-tap-dance";
@@ -80,7 +80,7 @@
 
         default_layer {
             bindings = <
-                &td0        &kp Q        &kp W        &kp E          &kp R           &kp T                       &kp Y          &kp U            &kp I               &kp O        &kp P            &kp BSPC
+                &kp ESC     &kp Q        &kp W        &kp E          &kp R           &kp T                       &kp Y          &kp U            &kp I               &kp O        &kp P            &kp BSPC
                 &kp TAB     &hml LCTRL A &hml LGUI S  &hml LALT D    &hml LSHFT F    &kp G                       &kp H          &hmr RSHFT J     &hmr RALT K         &hmr RGUI L  &hmr RCTRL COLON &kp DOUBLE_QUOTES
                 &kp CAPS    &kp Z        &kp X        &kp C          &kp V           &kp B                       &kp N          &kp M            &kp COMMA           &kp DOT      &kp FSLH         &kp DELETE
                                                       &kp LEFT_SHIFT &mo LOWER_LAYER &hml LSHFT SPACE            &hmr RSHFT RET &mo RAISE_LAYER  &mo FUNCTIONS_LAYER
@@ -89,7 +89,7 @@
 
         lower_layer {
             bindings = <
-                &td0        &kp N1       &kp N2       &kp N3         &kp N4          &kp N5                      &kp N6         &kp N7           &kp N8              &kp N9       &kp N0           &kp BSPC
+                &kp ESC     &kp N1       &kp N2       &kp N3         &kp N4          &kp N5                      &kp N6         &kp N7           &kp N8              &kp N9       &kp N0           &kp BSPC
                 &kp TAB     &kp RG(A)    &kp ASTRK    &kp MINUS      &kp PLUS        &kp EQUAL                   &kp LEFT       &kp DOWN         &kp UP              &kp RIGHT    &none            &none
                 &none       &kp RG(Z)    &kp RG(X)    &kp RG(C)      &kp RG(V)       &none                       &none          &none            &kp COMMA           &kp DOT      &kp FSLH         &kp DELETE
                                                       &trans         &trans          &kp SPACE                   &kp RET        &mo ADMIN_LAYER  &trans
@@ -98,7 +98,7 @@
 
         raise_layer {
             bindings = <
-                &td0        &kp EXCL     &kp AT       &kp HASH       &kp DLLR        &kp PRCNT                   &kp CARET      &kp GRAVE        &none               &none        &none            &kp BSPC
+                &kp ESC     &kp EXCL     &kp AT       &kp HASH       &kp DLLR        &kp PRCNT                   &kp CARET      &kp GRAVE        &kp PIPE            &none        &none            &kp BSPC
                 &kp TAB     &kp RG(A)    &kp ASTRK    &kp TILDE      &kp UNDER       &kp AMPS                    &kp LBRC       &kp LPAR         &kp LBKT            &kp LT       &kp SEMICOLON    &kp APOSTROPHE
                 &none       &kp RG(Z)    &kp RG(X)    &kp RG(C)      &kp RG(V)       &none                       &kp RBRC       &kp RPAR         &kp RBKT            &kp GT       &kp BSLH         &kp DELETE
                                                       &trans         &mo ADMIN_LAYER &kp SPACE                   &kp RET        &trans           &trans
@@ -108,7 +108,7 @@
         functions_layer {
             bindings = <
                 &none       &kp F1       &kp F2       &kp F3         &kp F4          &kp F5                      &kp F6         &kp F7           &kp F8              &kp F9       &kp F10          &none
-                &none       &none        &none        &none          &kp F11         &kp F12                     &kp C_PREV     &kp C_VOL_DN     &kp C_VOL_UP        &kp C_NEXT   &none            &none
+                &none       &kp F11      &kp F12      &none          &none           &none                       &kp C_PREV     &kp C_VOL_DN     &kp C_VOL_UP        &kp C_NEXT   &none            &none
                 &none       &none        &none        &none          &none           &none                       &none          &kp C_MUTE       &kp C_PLAY_PAUSE    &none        &none            &none
                                                       &none          &none           &none                       &none          &none            &none
             >;

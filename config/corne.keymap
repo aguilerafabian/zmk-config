@@ -9,7 +9,7 @@
 #define FUNCTIONS_LAYER 3
 #define ADMIN_LAYER     4
 
-// GASC(Control / Command-Alt / Gui / Shift) as home row mod
+// SAGC(Shift / Command-Alt / Gui / Control) as home row mod
 
 / {
     behaviors {
@@ -81,7 +81,7 @@
         default_layer {
             bindings = <
                 &kp ESC     &kp Q        &kp W        &kp E          &kp R           &kp T                       &kp Y          &kp U            &kp I               &kp O        &kp P            &kp BSPC
-                &kp TAB     &hml LCTRL A &hml LGUI S  &hml LALT D    &hml LSHFT F    &kp G                       &kp H          &hmr RSHFT J     &hmr RALT K         &hmr RGUI L  &hmr RCTRL COLON &kp DOUBLE_QUOTES
+                &kp TAB     &hml LSHFT A &hml LGUI S  &hml LALT D    &hml LCTRL F    &kp G                       &kp H          &hmr RCTRL J     &hmr RALT K         &hmr RGUI L  &hmr RSHFT COLON &kp DOUBLE_QUOTES
                 &kp CAPS    &kp Z        &kp X        &kp C          &kp V           &kp B                       &kp N          &kp M            &kp COMMA           &kp DOT      &kp FSLH         &kp DELETE
                                                       &kp LEFT_SHIFT &mo LOWER_LAYER &hml LSHFT SPACE            &hmr RSHFT RET &mo RAISE_LAYER  &mo FUNCTIONS_LAYER
             >;
@@ -91,7 +91,7 @@
             bindings = <
                 &kp ESC     &kp N1       &kp N2       &kp N3         &kp N4          &kp N5                      &kp N6         &kp N7           &kp N8              &kp N9       &kp N0           &kp BSPC
                 &kp TAB     &kp RG(A)    &kp ASTRK    &kp MINUS      &kp PLUS        &kp EQUAL                   &kp LEFT       &kp DOWN         &kp UP              &kp RIGHT    &none            &none
-                &none       &kp RG(Z)    &kp RG(X)    &kp RG(C)      &kp RG(V)       &none                       &none          &none            &kp COMMA           &kp DOT      &kp FSLH         &kp DELETE
+                &kp RC(S)   &kp RG(Z)    &kp RG(X)    &kp RG(C)      &kp RG(V)       &none                       &none          &none            &kp COMMA           &kp DOT      &kp FSLH         &kp DELETE
                                                       &trans         &trans          &kp SPACE                   &kp RET        &mo ADMIN_LAYER  &trans
             >;
         };
@@ -99,8 +99,8 @@
         raise_layer {
             bindings = <
                 &kp ESC     &kp EXCL     &kp AT       &kp HASH       &kp DLLR        &kp PRCNT                   &kp CARET      &kp GRAVE        &kp PIPE            &none        &none            &kp BSPC
-                &kp TAB     &kp RG(A)    &kp ASTRK    &kp TILDE      &kp UNDER       &kp AMPS                    &kp LBRC       &kp LPAR         &kp LBKT            &kp LT       &kp SEMICOLON    &kp APOSTROPHE
-                &none       &kp RG(Z)    &kp RG(X)    &kp RG(C)      &kp RG(V)       &none                       &kp RBRC       &kp RPAR         &kp RBKT            &kp GT       &kp BSLH         &kp DELETE
+                &kp TAB     &none        &kp ASTRK    &kp TILDE      &kp UNDER       &kp AMPS                    &kp LBRC       &kp LPAR         &kp LBKT            &kp LT       &kp SEMICOLON    &kp APOSTROPHE
+                &kp RC(S)   &none        &none        &none          &none           &none                       &kp RBRC       &kp RPAR         &kp RBKT            &kp GT       &kp BSLH         &kp DELETE
                                                       &trans         &mo ADMIN_LAYER &kp SPACE                   &kp RET        &trans           &trans
             >;
         };
